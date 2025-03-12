@@ -90,7 +90,7 @@ resource "aws_security_group" "app_sg" {
 # Launch Template
 resource "aws_launch_template" "app_template" {
   name_prefix   = "app-template"
-  image_id      = var.ami_id  # Replace with your AMI ID
+  image_id      = ami-04b4f1a9cf54c11d0  # Replace with your AMI ID
   instance_type = "t2.micro"
 
   user_data = base64encode(<<-EOF
