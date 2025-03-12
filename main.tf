@@ -120,8 +120,8 @@ EOF
 
 # Auto Scaling Group (ASG)
 resource "aws_autoscaling_group" "app_asg" {
-  desired_capacity     = 2
-  min_size            = 2
+  desired_capacity     = 1
+  min_size            = 1
   max_size            = 3
   vpc_zone_identifier = aws_subnet.public[*].id  # Attach ASG to public subnets
 
@@ -164,4 +164,30 @@ resource "aws_lb_listener" "http_listener" {
 resource "aws_autoscaling_attachment" "asg_attachment" {
   autoscaling_group_name = aws_autoscaling_group.app_asg.id
   lb_target_group_arn    = aws_lb_target_group.app_tg.arn
+}
+
+
+# Create Two Standalone EC2 Instances
+resource "aws_instance" "web_instance_1" {
+  ami             = var.ami_id
+  instance_type   = "t2.micro"
+  subnet_id       = aws_subnet.public[0].id
+  key_name        = var.key_name
+  security_groups = [aws_security_group.app_sg.id]
+
+  tags = {
+    Name = "jenkins-master"
+  }
+}
+
+resource "aws_instance" "web_instance_2" {
+  ami             = var.ami_id
+  instance_type   = "t2.micro"
+  subnet_id       = aws_subnet.public[1].id
+  key_name        = var.key_name
+  security_groups = [aws_security_group.app_sg.id]
+
+  tags = {
+    Name = "jenkins-slave"
+  }
 }
