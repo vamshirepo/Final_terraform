@@ -4,7 +4,7 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
-variable "image_id" {
+variable "ami_id" {
   description = "Amazon Machine Image ID"
   type        = string
 }
