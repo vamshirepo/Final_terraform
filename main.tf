@@ -172,7 +172,7 @@ resource "aws_instance" "web_instance_1" {
   ami             = var.ami_id
   instance_type   = "t2.micro"
   subnet_id       = aws_subnet.public[0].id
-  key_name        = var.key_name
+  #key_name        = var.key_name
   security_groups = [aws_security_group.app_sg.id]
 
   tags = {
@@ -184,7 +184,7 @@ resource "aws_instance" "web_instance_2" {
   ami             = var.ami_id
   instance_type   = "t2.micro"
   subnet_id       = aws_subnet.public[1].id
-  key_name        = var.key_name
+  #key_name        = var.key_name
   security_groups = [aws_security_group.app_sg.id]
 
   tags = {
