@@ -39,7 +39,7 @@ variable "subnet_2_id" {
   default     = "subnet-0472fa04e525a0a69"
 }
 
-variable "key_name" {
+/*variable "key_name" {
   description = "The name of the SSH key pair"
   type        = string  
-}
+}*/
