@@ -6,7 +6,7 @@ pipeline {
     
     environment {
         AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
-        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
 
     }
 
@@ -17,7 +17,7 @@ pipeline {
             steps {
                 script {
                     dir("terraform") {
-                        git branch: 'main', url: "https://github.com/Rakesh-k-ops/Final_terra.git"
+                        git branch: 'main', url: "https://github.com/vamshirepo/Final_terraform.git"
                     }
                 }
             }
